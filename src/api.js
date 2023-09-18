@@ -65,13 +65,20 @@ const login = async(credentials)=> {
   return loginWithToken();
 };
 
+const updatePost = async(post)=> {
+  const response = await axios.put(
+    `${BASE_URL}${post.id}`, post)
+    return response.data
+}
+
 const api = {
   logout,
   register,
   login,
   loginWithToken,
   fetchPosts,
-  createPost
+  createPost,
+  updatePost
 
 };
 

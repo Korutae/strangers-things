@@ -57,6 +57,12 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
+  const updatePost = async(post)=> {
+    post = await api.updatePost(post);
+    const updatedPost = post.data;
+    setPosts(posts.map(post => post.id !== updatedPost.id ? post : updatedPost))
+
+  }
 
   return (
     <>
@@ -65,7 +71,7 @@ function App() {
         auth.username ? (
           <div>
             <h1>
-              Welcome { auth.username }
+              Welcome { auth.username }. You have {auth.posts.length} posts.
               <button onClick={ logout }>Logout</button>
             </h1>
             <div id='navbar'>
@@ -91,8 +97,9 @@ function App() {
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
         <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post updatePost={ updatePost } posts= { posts }/> } />
         <Route path='/about_us' element={ <AboutUs />} />
-        <Route path='contact_us' element={ <ContactUs />}></Route>
+        <Route path='/contact_us' element={ <ContactUs />}></Route>
       </Routes>
     </>
   )

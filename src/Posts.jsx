@@ -7,9 +7,7 @@ const Posts = ({ posts, auth })=> {
         posts.map( post => {
           return (
             <li key={ post._id } className={ post.author._id === auth._id ? 'mine': ''}>
-              <Link to={`/posts/${post._id}`}>{ post.title }</Link>  
-              Price: { post.price }
-              Username: { post.author.username } 
+              <Link to={`/posts/${post._id}`}>{ post.title }</Link>  Price: { isNaN(post.price) ? post.price : '$' + post.price}, Seller: { post.author.username }{ post.location === '[On Request]' ? '' : ', Location: ' + post.location}
             </li>
           );
         })
@@ -19,6 +17,4 @@ const Posts = ({ posts, auth })=> {
 };
 
 export default Posts;
-
-// ${ (post.price*1).toFixed(2) 
 
