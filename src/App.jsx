@@ -97,7 +97,7 @@ function App() {
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
         <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
-        <Route path='/posts/:id' element={ <Post updatePost={ updatePost } posts= { posts }/> } />
+        <Route path ='/posts/:id' element={ <Post updatePost={ updatePost } posts= { posts }/> } />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element={ <ContactUs />}></Route>
       </Routes>

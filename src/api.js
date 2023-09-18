@@ -55,6 +55,12 @@ const createPost = async(post)=> {
   return response.data.data.post;
 };
 
+const updatePost = async(post)=> {
+  const response = await axios.put(
+    `${BASE_URL}${post.id}`, post)
+    return response.data;
+}
+
 const login = async(credentials)=> {
   const response = await axios.post(
     `${BASE_URL}/users/login`,
@@ -65,11 +71,7 @@ const login = async(credentials)=> {
   return loginWithToken();
 };
 
-const updatePost = async(post)=> {
-  const response = await axios.put(
-    `${BASE_URL}${post.id}`, post)
-    return response.data
-}
+
 
 const api = {
   logout,
