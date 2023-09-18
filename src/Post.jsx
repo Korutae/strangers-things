@@ -1,5 +1,3 @@
-//i have no idea why it is saying updatePost is not a function
-
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
 

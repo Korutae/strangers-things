@@ -56,8 +56,13 @@ const createPost = async(post)=> {
 };
 
 const updatePost = async(post)=> {
+  console.log(post); //shows the editted post's value
+  console.log(post.id)
+  const token = window.localStorage.getItem('token');
+  console.log(`${BASE_URL}/posts/${post.id}`);
   const response = await axios.put(
     `${BASE_URL}${post.id}`, post)
+    console.log(response);
     return response.data;
 }
 

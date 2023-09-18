@@ -60,7 +60,7 @@ function App() {
   const updatePost = async(post)=> {
     post = await api.updatePost(post);
     const updatedPost = post.data;
-    setPosts(posts.map(post => post.id !== updatedPost.id ? post : updatedPost))
+    setPosts(posts.map(post => post._id !== updatedPost._id ? post : updatedPost))
 
   }
 
@@ -96,7 +96,7 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth } updatePost={updatePost}/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth } updatePost={ updatePost }/>} />
         <Route path ='/posts/:id' element={ <Post updatePost={ updatePost } posts= { posts }/> } />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element={ <ContactUs />}></Route>
